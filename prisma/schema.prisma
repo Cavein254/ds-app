@@ -57,37 +57,39 @@ model VerificationRequest {
   @@unique([identifier, token])
 }
 
-
-
 model Profile {
-  id String @id @default(cuid())
-  userId String @unique
+  id       String  @id @default(cuid())
+  userId   String  @unique
   imageUrl String? @db.Text
 
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-  
-  tribes Tribe[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  tribes  Tribe[]
+  members Member[]
+  clans   Clan[]
 }
 
 // Territory -> Colony -> Tribe
 model Tribe {
-    id String @id @default(uuid())
-    name String
-    imageUrl String? @db.Text
-    invite String @db.Text
-    active Boolean @default(true)
-    deleted Boolean @default(false)
+  id       String  @id @default(uuid())
+  name     String
+  imageUrl String? @db.Text
+  invite   String  @db.Text
+  active   Boolean @default(true)
+  deleted  Boolean @default(false)
 
-    profileId String
-    profile Profile @relation(fields:[profileId], references: [id], onDelete: SetDefault)
-    //TODO :: Check what references to setDefault does
+  profileId String
+  profile   Profile @relation(fields: [profileId], references: [id], onDelete: SetDefault)
+  //TODO :: Check what references to setDefault does
 
-    @@index([profileId])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-    createdAt  DateTime @default(now())
-    updatedAt  DateTime @updatedAt
+  members Member[]
+  clans   Clan[]
 
+  @@index([profileId])
 }
 
 enum MemberTier {
@@ -104,8 +106,36 @@ enum MemberRole {
 }
 
 model Member {
-  id String @id @default(uuid())
-  role MemberRole @default(GUEST)
+  id         String     @id @default(uuid())
+  role       MemberRole @default(GUEST)
   memberTier MemberTier @default(TIERONE)
 
+  profileId String
+  profile   Profile @relation(fields: [profileId], references: [id], onDelete: SetDefault)
+
+  tribeId String
+  tribe   Tribe  @relation(fields: [tribeId], references: [id], onDelete: SetDefault)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([profileId])
+  @@index([tribeId])
+}
+
+model Clan {
+  id   String @id @default(uuid())
+  name String
+
+  profileId String
+  profile   Profile @relation(fields: [profileId], references: [id], onDelete: SetDefault)
+
+  tribeId String
+  tribe   Tribe  @relation(fields: [tribeId], references: [id], onDelete: SetDefault)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([profileId])
+  @@index([tribeId])
 }
