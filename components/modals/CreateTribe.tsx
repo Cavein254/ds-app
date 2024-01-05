@@ -44,6 +44,8 @@ const CreateTribe = () => {
       name,
       imageUrl,
       description,
+      invite: 'hghgh',
+      profileId: 'clr0q48ic00005ej2qnd61sey',
     };
     try {
       await axios.post('/api/me/create-tribe', formData, {
