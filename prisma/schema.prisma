@@ -56,3 +56,56 @@ model VerificationRequest {
 
   @@unique([identifier, token])
 }
+
+
+
+model Profile {
+  id String @id @default(cuid())
+  userId String @unique
+  imageUrl String? @db.Text
+
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  
+  tribes Tribe[]
+}
+
+// Territory -> Colony -> Tribe
+model Tribe {
+    id String @id @default(uuid())
+    name String
+    imageUrl String? @db.Text
+    invite String @db.Text
+    active Boolean @default(true)
+    deleted Boolean @default(false)
+
+    profileId String
+    profile Profile @relation(fields:[profileId], references: [id], onDelete: SetDefault)
+    //TODO :: Check what references to setDefault does
+
+    @@index([profileId])
+
+    createdAt  DateTime @default(now())
+    updatedAt  DateTime @updatedAt
+
+}
+
+enum MemberTier {
+  TIERONE
+  TIERTWO
+  TIERTHREE
+  TIERFOUR
+}
+
+enum MemberRole {
+  ADMIN
+  MODERATOR
+  GUEST
+}
+
+model Member {
+  id String @id @default(uuid())
+  role MemberRole @default(GUEST)
+  memberTier MemberTier @default(TIERONE)
+
+}

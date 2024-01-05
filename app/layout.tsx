@@ -1,3 +1,4 @@
+import { cn } from '@/lib/utils';
 import NextAuthSessionProvider from '@/providers/SessionProvider';
 import { ThemeProvider } from '@/providers/ThemeProvider';
 import type { Metadata } from 'next';
@@ -17,7 +18,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className} suppressHydrationWarning={true}>
+      <body
+        className={cn(inter.className, 'bg-[#f3f3f3] dark:bg-[#313338]')}
+        suppressHydrationWarning={true}
+      >
         <NextAuthSessionProvider>
           <ThemeProvider
             attribute="class"
