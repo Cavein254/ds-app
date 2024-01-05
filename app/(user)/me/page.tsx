@@ -5,6 +5,7 @@ import {
   RegisterButton,
 } from '@/components/buttons.component';
 import { ToggleTheme } from '@/components/misillenious/ToggleTheme';
+import CreateTribe from '@/components/modals/CreateTribe';
 // import { authOptions } from '@/lib/auth';
 // import { getServerSession } from 'next-auth';
 import { initialUser } from '@/lib/routines/initUser';
@@ -37,7 +38,7 @@ export default async function Home() {
         <LogoutButton />
         <ProfileButton />
 
-        <h1>Create a tribe</h1>
+        <CreateTribe />
       </div>
     </main>
   );
