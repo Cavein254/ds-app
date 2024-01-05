@@ -4,6 +4,7 @@ import {
   ProfileButton,
   RegisterButton,
 } from '@/components/buttons.component';
+import { ToggleTheme } from '@/components/misillenious/ToggleTheme';
 import { authOptions } from '@/lib/auth';
 import { getServerSession } from 'next-auth';
 
@@ -20,6 +21,7 @@ export default async function Home() {
         height: '70vh',
       }}
     >
+      <ToggleTheme />
       <div>
         <LoginButton />
         <RegisterButton />
