@@ -59,7 +59,9 @@ model VerificationRequest {
 
 model Profile {
   id       String  @id @default(cuid())
-  userId   String  @unique
+  userId   String? @unique
+  email    String? @unique
+  name     String?
   imageUrl String? @db.Text
 
   createdAt DateTime @default(now())
