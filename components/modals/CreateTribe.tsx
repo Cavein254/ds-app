@@ -1,6 +1,7 @@
 'use client';
 import { Button } from '@/components/ui/button';
 import { zodResolver } from '@hookform/resolvers/zod';
+import axios from 'axios';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
@@ -37,14 +38,22 @@ const CreateTribe = () => {
     console.log({ values });
   };
 
-  const onHandleSubmit = (e) => {
+  const onHandleSubmit = async (e) => {
     e.preventDefault();
     const formData = {
       name,
       imageUrl,
       description,
     };
-    console.log(formData);
+    try {
+      await axios.post('/api/me/create-tribe', formData, {
+        headers: {
+          Accept: 'application/json',
+        },
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <form

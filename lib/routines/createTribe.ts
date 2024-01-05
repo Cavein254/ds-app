@@ -1,7 +1,17 @@
-// import prisma from "@/lib/prismadb";
-import { NextRequest, NextResponse } from 'next/server';
+import prisma from '@/lib/prismadb';
+import { NextResponse } from 'next/server';
 
-export const createTribe = (req: NextRequest, res: NextResponse) => {
-  console.log(req.body);
-  return NextResponse.json({ ok: 'true' });
-};
+export async function createTribe(req: Request, res: Response) {
+  const tribe = await new Response(req.body).json();
+  try {
+    console.log(tribe);
+    const newTribe = await prisma.tribe.create({
+      data: tribe,
+    });
+    console.log('created new user');
+    return NextResponse.json(newTribe);
+  } catch (err) {
+    console.log(err);
+    return NextResponse.json(err);
+  }
+}
