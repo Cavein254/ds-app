@@ -75,12 +75,13 @@ model Profile {
 
 // Territory -> Colony -> Tribe
 model Tribe {
-  id       String  @id @default(uuid())
-  name     String
-  imageUrl String? @db.Text
-  invite   String  @db.Text
-  active   Boolean @default(true)
-  deleted  Boolean @default(false)
+  id          String  @id @default(uuid())
+  name        String
+  imageUrl    String? @db.Text
+  description String? @db.Text
+  invite      String  @db.Text
+  active      Boolean @default(true)
+  deleted     Boolean @default(false)
 
   profileId String
   profile   Profile @relation(fields: [profileId], references: [id], onDelete: SetDefault)

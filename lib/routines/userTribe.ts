@@ -10,4 +10,5 @@ export const userTribe = async (profile) => {
       },
     },
   });
+  return tribes;
 };
