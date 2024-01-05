@@ -1,7 +1,11 @@
 import prisma from '@/lib/prismadb';
+// import { authOptions } from '@/lib/auth';
+// import { getServerSession } from 'next-auth';
 
 export const initialUser = async () => {
   //TODO :: Get user email from NextAuth
+  //TODO :: if no user run a redirect
+  // const session = await getServerSession(authOptions);
   const nextEmail = {
     id: 'x4563dtyr67835',
     first_name: 'cavein',

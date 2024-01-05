@@ -5,13 +5,13 @@ import {
   RegisterButton,
 } from '@/components/buttons.component';
 import { ToggleTheme } from '@/components/misillenious/ToggleTheme';
-import { authOptions } from '@/lib/auth';
-import { getServerSession } from 'next-auth';
+// import { authOptions } from '@/lib/auth';
+// import { getServerSession } from 'next-auth';
+import { initialUser } from '@/lib/routines/initUser';
 
 export default async function Home() {
-  const session = await getServerSession(authOptions);
-  console.log('getting data');
-  console.log({ session });
+  // const session = await getServerSession(authOptions);
+  const session = await initialUser();
   return (
     <main
       style={{
