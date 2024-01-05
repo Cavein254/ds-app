@@ -60,6 +60,7 @@ model VerificationRequest {
 model Profile {
   id       String  @id @default(cuid())
   userId   String? @unique
+  username String? @unique
   email    String? @unique
   name     String?
   imageUrl String? @db.Text

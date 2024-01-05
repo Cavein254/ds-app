@@ -27,4 +27,6 @@ export const initialUser = async () => {
       email: nextEmail.email,
     },
   });
+
+  return newProfile;
 };
