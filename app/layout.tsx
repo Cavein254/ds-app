@@ -28,7 +28,6 @@ export default function RootLayout({
             defaultTheme="dark"
             enableSystem={false}
             storageKey="${process.env.NEXT_APP_NAME}"
-            /* TODO:: Fix the above line */
           >
             {children}
           </ThemeProvider>
