@@ -2,6 +2,7 @@
 
 import { ArrowLeft } from 'lucide-react';
 import DirectMessages from '../messages/DirectMessages';
+import FavoriteListings from './FavoritesListing';
 import MinorSidebarItem from './MinorSidebarItem';
 import TribeListings from './TribeListings';
 
@@ -31,8 +32,8 @@ const MinorSidebar = ({ openModal, setopenModal }: StateProps) => {
         </div>
         <MinorSidebarItem name="favorites" />
         <div>
-          <TribeListings name="Jungle Tribe" />
-          <TribeListings name="Drama Tribe" />
+          <FavoriteListings name="Jungle Tribe" />
+          <FavoriteListings name="Drama Tribe" />
         </div>
         <MinorSidebarItem name="Direct Messages" />
         <div>
@@ -40,7 +41,12 @@ const MinorSidebar = ({ openModal, setopenModal }: StateProps) => {
           <DirectMessages />
           <DirectMessages />
         </div>
-        <MinorSidebarItem name="Groups" />
+        <MinorSidebarItem name="Tribes" />
+        <div>
+          <TribeListings name="Crypto" />
+          <TribeListings name="Crypto" />
+          <TribeListings name="Crypto" />
+        </div>
       </div>
     </div>
   );
