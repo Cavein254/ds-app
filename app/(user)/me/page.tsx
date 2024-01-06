@@ -1,10 +1,3 @@
-import {
-  LoginButton,
-  LogoutButton,
-  ProfileButton,
-  RegisterButton,
-} from '@/components/buttons.component';
-import { ToggleTheme } from '@/components/misillenious/ToggleTheme';
 import CreateTribe from '@/components/modals/CreateTribe';
 // import { authOptions } from '@/lib/auth';
 // import { getServerSession } from 'next-auth';
@@ -22,24 +15,5 @@ export default async function Home() {
   if (tribes) {
     redirect(`/tribes/${tribes.id}`);
   }
-  return (
-    <main
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '70vh',
-      }}
-    >
-      <ToggleTheme />
-      <div>
-        <LoginButton />
-        <RegisterButton />
-        <LogoutButton />
-        <ProfileButton />
-
-        <CreateTribe />
-      </div>
-    </main>
-  );
+  return <CreateTribe />;
 }
