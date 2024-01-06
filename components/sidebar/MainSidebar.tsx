@@ -1,7 +1,7 @@
+import { ToggleTheme } from '@/components/misillenious/ToggleTheme';
 import prisma from '@/lib/prismadb';
 import { initialUser } from '@/lib/routines/initUser';
 import { redirect } from 'next/navigation';
-import SideBarToggle from './SideBarToggle';
 import SidebarItem from './SidebarItem';
 
 const MainSidebar = async () => {
@@ -23,8 +23,8 @@ const MainSidebar = async () => {
   return (
     <div className="h-full">
       <div className="">
-        <SideBarToggle />
         <SidebarItem />
+        <ToggleTheme />
       </div>
     </div>
   );
