@@ -1,9 +1,10 @@
+import Dog from '@/assets/dog2_edited.png';
 import { ToggleTheme } from '@/components/misillenious/ToggleTheme';
 import prisma from '@/lib/prismadb';
 import { initialUser } from '@/lib/routines/initUser';
+import Image from 'next/image';
 import { redirect } from 'next/navigation';
 import SidebarItem from './SidebarItem';
-
 const MainSidebar = async () => {
   const profile = await initialUser();
 
@@ -21,9 +22,18 @@ const MainSidebar = async () => {
     },
   });
   return (
-    <div className="h-full">
-      <div className="">
+    <div className="h-full dark:bg-[#181310] bg-gray-400">
+      <div className="h-[85%] p-[2px] flex flex-col items-center">
         <SidebarItem />
+      </div>
+      <div className="bottom-0 right-0 flex flex-col justify-center items-center">
+        <Image
+          src={Dog}
+          height={50}
+          width={50}
+          alt="profile Pic"
+          className="contain rounded-full my-2"
+        />
         <ToggleTheme />
       </div>
     </div>

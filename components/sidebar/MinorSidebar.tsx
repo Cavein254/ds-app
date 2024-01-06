@@ -12,9 +12,9 @@ interface StateProps {
 }
 const MinorSidebar = ({ openModal, setopenModal }: StateProps) => {
   return (
-    <div className="w-[250px] dark:bg-[#000000] p-4 flex flex-row justify-center items-center">
+    <div className="w-[250px] dark:bg-[#000000] p-4 flex flex-row justify-center items-center bg-gray-300">
       <div>
-        <div className="flex justify-end items-center my-2">
+        <div className="flex justify-end items-center py-2">
           <div
             className="h-[48px] w-[48px] rounded-full py-2 hover:shadow-sm dark:bg-slate-900 flex justify-center items-center
     hover:dark:bg-slate-100 hover:dark:text-[#130f0e] hover:bg-emerald-600 hover:text-slate-100"
