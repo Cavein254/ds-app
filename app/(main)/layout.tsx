@@ -33,7 +33,7 @@ export default function RootLayout({
             storageKey={appName}
           >
             <main className="flex h-full w-full">
-              <div className="w-[5%] md:w-[15%] h-[full]">
+              <div className="w-[10%] md:w-[15%] h-[full]">
                 <MainSidebar />
               </div>
               <div>{children}</div>
