@@ -12,7 +12,7 @@ interface StateProps {
 }
 const MinorSidebar = ({ openModal, setopenModal }: StateProps) => {
   return (
-    <div className="w-[250px] dark:bg-[#000000] p-4 flex flex-row justify-center items-center bg-gray-300">
+    <div className="h-full w-[250px] dark:bg-[#000000] p-4 flex flex-row justify-center items-center bg-gray-300">
       <div>
         <div className="flex justify-end items-center py-2">
           <div

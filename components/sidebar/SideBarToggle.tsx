@@ -7,7 +7,7 @@ import MinorSidebar from './MinorSidebar';
 const SideBarToggle = () => {
   const [openModal, setopenModal] = useState(false);
   return (
-    <div className="">
+    <div className="h-full">
       <div className={cn(openModal ? 'visible' : 'hidden')}>
         <div
           className="h-[48px] w-[48px] rounded-full py-2 hover:shadow-sm dark:bg-slate-900 flex justify-center items-center
@@ -17,11 +17,15 @@ const SideBarToggle = () => {
           {openModal ? <ArrowRight /> : ''}
         </div>
       </div>
-      <div className="h-full dark:bg-[#000000] bg-gray-300">
+      <div
+        className={cn(openModal ? '' : 'h-full  dark:bg-[#000000] bg-gray-300')}
+      >
         {openModal ? (
           ''
         ) : (
-          <MinorSidebar openModal={openModal} setopenModal={setopenModal} />
+          <div className="">
+            <MinorSidebar openModal={openModal} setopenModal={setopenModal} />
+          </div>
         )}
       </div>
     </div>
