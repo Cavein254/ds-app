@@ -51,6 +51,7 @@ const CreateTribe = () => {
           Accept: 'application/json',
         },
       });
+      window.location.reload();
     } catch (err) {
       console.log(err);
     }
