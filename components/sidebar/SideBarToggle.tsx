@@ -1,4 +1,5 @@
 'use client';
+import { cn } from '@/lib/utils';
 import { ArrowRight } from 'lucide-react';
 import { useState } from 'react';
 import MinorSidebar from './MinorSidebar';
@@ -6,15 +7,24 @@ import MinorSidebar from './MinorSidebar';
 const SideBarToggle = () => {
   const [openModal, setopenModal] = useState(false);
   return (
-    <div>
-      <div
-        className="my-2 h-[48px] w-[48px] rounded-full py-2 border-[1px] shadow-sm dark:bg-slate-900 flex justify-center items-center
+    <div className=" h-full">
+      <div className={cn(openModal ? 'visible' : 'hidden')}>
+        <div
+          className="h-[48px] w-[48px] rounded-full py-2 shadow-sm dark:bg-slate-900 flex justify-center items-center
     hover:dark:bg-slate-100 hover:dark:text-[#130f0e]"
-        onClick={() => setopenModal(!openModal)}
-      >
-        {openModal ? <ArrowRight /> : ''}
+          onClick={() => setopenModal(!openModal)}
+        >
+          {openModal ? <ArrowRight /> : ''}
+        </div>
       </div>
-      <div>{openModal ? '' : <MinorSidebar />}</div>
+      <div className="">
+        {openModal ? (
+          ''
+        ) : (
+          <MinorSidebar openModal={openModal} setopenModal={setopenModal} />
+        )}
+        d
+      </div>
     </div>
   );
 };
