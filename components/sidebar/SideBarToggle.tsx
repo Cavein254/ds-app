@@ -10,8 +10,8 @@ const SideBarToggle = () => {
     <div className=" h-full">
       <div className={cn(openModal ? 'visible' : 'hidden')}>
         <div
-          className="h-[48px] w-[48px] rounded-full py-2 shadow-sm dark:bg-slate-900 flex justify-center items-center
-    hover:dark:bg-slate-100 hover:dark:text-[#130f0e]"
+          className="h-[48px] w-[48px] rounded-full py-2 hover:shadow-sm dark:bg-slate-900 flex justify-center items-center
+    hover:dark:bg-slate-100 hover:dark:text-[#130f0e] hover:bg-emerald-600 hover:text-slate-100 mt-2"
           onClick={() => setopenModal(!openModal)}
         >
           {openModal ? <ArrowRight /> : ''}
