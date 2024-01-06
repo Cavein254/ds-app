@@ -3,6 +3,7 @@ import { initialUser } from '@/lib/routines/initUser';
 import { redirect } from 'next/navigation';
 import SideBarToggle from './SideBarToggle';
 import SidebarItem from './SidebarItem';
+
 const MainSidebar = async () => {
   const profile = await initialUser();
 
