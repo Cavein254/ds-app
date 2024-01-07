@@ -4,6 +4,7 @@ import prisma from '@/lib/prismadb';
 import { initialUser } from '@/lib/routines/initUser';
 import Image from 'next/image';
 import { redirect } from 'next/navigation';
+import { ScrollArea } from '../ui/scroll-area';
 import SidebarItem from './SidebarItem';
 const MainSidebar = async () => {
   const profile = await initialUser();
@@ -21,11 +22,15 @@ const MainSidebar = async () => {
       },
     },
   });
-  console.log(tribes);
+
+  const tribeList = tribes?.map((tribe) => (
+    <div key={tribe.id}>{tribe.name}</div>
+  ));
   return (
     <div className="h-full dark:bg-[#181310] bg-gray-400">
       <div className="h-[85%] p-[2px] flex flex-col items-center">
         <SidebarItem />
+        <ScrollArea className="">{tribeList}</ScrollArea>
       </div>
       <div className="bottom-0 right-0 flex flex-col justify-center items-center">
         <Image
