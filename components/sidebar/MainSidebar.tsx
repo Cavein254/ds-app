@@ -1,5 +1,6 @@
 import Dog from '@/assets/dog2_edited.png';
 import { ToggleTheme } from '@/components/misillenious/ToggleTheme';
+import NavItem from '@/components/nav/NavItem';
 import prisma from '@/lib/prismadb';
 import { initialUser } from '@/lib/routines/initUser';
 import Image from 'next/image';
@@ -23,14 +24,18 @@ const MainSidebar = async () => {
     },
   });
 
-  const tribeList = tribes?.map((tribe) => (
-    <div key={tribe.id}>{tribe.name}</div>
-  ));
   return (
     <div className="h-full dark:bg-[#181310] bg-gray-400">
       <div className="h-[85%] p-[2px] flex flex-col items-center">
         <SidebarItem />
-        <ScrollArea className="">{tribeList}</ScrollArea>
+        {/* TODO :: Add conditional routing to check route so to display  */}
+        <ScrollArea className="">
+          {tribes?.map((tribe) => (
+            <div key={tribe.id}>
+              <NavItem />
+            </div>
+          ))}
+        </ScrollArea>
       </div>
       <div className="bottom-0 right-0 flex flex-col justify-center items-center">
         <Image
