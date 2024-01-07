@@ -2,15 +2,17 @@
 
 import { ArrowLeft } from 'lucide-react';
 import DirectMessages from '../messages/DirectMessages';
+import { ScrollArea } from '../ui/scroll-area';
 import FavoriteListings from './FavoritesListing';
 import MinorSidebarItem from './MinorSidebarItem';
-import TribeListings from './TribeListings';
-
+import TribeListingContainer from './TribeListingContainer';
 interface StateProps {
   setopenModal: (value: boolean) => void;
   openModal: boolean;
 }
-const MinorSidebar = ({ openModal, setopenModal }: StateProps) => {
+const MinorSidebar = async ({ openModal, setopenModal }: StateProps) => {
+  //TODO :: implement better state management tool
+
   return (
     <div className="h-full w-[250px] dark:bg-[#000000] p-4 flex flex-row justify-center items-center bg-gray-300">
       <div>
@@ -43,9 +45,9 @@ const MinorSidebar = ({ openModal, setopenModal }: StateProps) => {
         </div>
         <MinorSidebarItem name="Tribes" />
         <div>
-          <TribeListings name="Crypto" />
-          <TribeListings name="Crypto" />
-          <TribeListings name="Crypto" />
+          <ScrollArea className="flex-1 w-full h-[200px]">
+            <TribeListingContainer />
+          </ScrollArea>
         </div>
       </div>
     </div>

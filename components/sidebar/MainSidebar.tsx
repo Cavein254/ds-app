@@ -21,6 +21,7 @@ const MainSidebar = async () => {
       },
     },
   });
+  console.log(tribes);
   return (
     <div className="h-full dark:bg-[#181310] bg-gray-400">
       <div className="h-[85%] p-[2px] flex flex-col items-center">

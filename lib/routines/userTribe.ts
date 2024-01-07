@@ -1,7 +1,7 @@
 import prisma from '@/lib/prismadb';
 
 export const userTribe = async (profile) => {
-  const tribes = await prisma.tribe.findFirst({
+  const tribe = await prisma.tribe.findFirst({
     where: {
       members: {
         some: {
@@ -10,5 +10,5 @@ export const userTribe = async (profile) => {
       },
     },
   });
-  return tribes;
+  return tribe;
 };
