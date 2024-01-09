@@ -4,9 +4,9 @@ export default function tribeLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div>
+    <html>
       {/* <MainSidebar /> */}
       <body>{children}</body>
-    </div>
+    </html>
   );
 }
