@@ -1,10 +1,9 @@
-import MainSidebar from '@/components/sidebar/MainSidebar';
+import '@/app/globals.css';
 import { cn } from '@/lib/utils';
 import NextAuthSessionProvider from '@/providers/SessionProvider';
 import { ThemeProvider } from '@/providers/ThemeProvider';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import '../../app/globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 const appName = `${process.env.NEXT_APP_NAME}`;
@@ -32,12 +31,7 @@ export default function RootLayout({
             enableSystem={false}
             storageKey={appName}
           >
-            <main className="flex h-full w-full">
-              <div className="w-[60px] h-full dark:bg-[#181310] flex flex-col items-center justify-center">
-                <MainSidebar />
-              </div>
-              <div>{children}</div>
-            </main>
+            <div>{children}</div>
           </ThemeProvider>
         </NextAuthSessionProvider>
       </body>

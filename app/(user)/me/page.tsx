@@ -13,7 +13,7 @@ export default async function Home() {
   //TODO :: Ask the user to join a community in place
   //TODO :: of creating one
   if (tribes) {
-    redirect(`/tribes/${tribes.id}`);
+    redirect(`/tribe/${tribes.id}`);
   }
   return <CreateTribe />;
 }

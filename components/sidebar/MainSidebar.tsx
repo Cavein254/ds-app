@@ -32,7 +32,7 @@ const MainSidebar = async () => {
         <ScrollArea className="">
           {tribes?.map((tribe) => (
             <div key={tribe.id}>
-              <NavItem />
+              <NavItem id={tribe.id} imageUrl={tribe.imageUrl} />
             </div>
           ))}
         </ScrollArea>
