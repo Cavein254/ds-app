@@ -1,11 +1,5 @@
-const page = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <html>
-      <body>
-        <main>{children}</main>
-      </body>
-    </html>
-  );
+const page = () => {
+  return <div>A good day</div>;
 };
 
 export default page;

@@ -6,14 +6,9 @@ export default function tribeLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html>
-      <body>
-        <main>
-          <MainSidebar />
-
-          {children}
-        </main>
-      </body>
-    </html>
+    <div>
+      <MainSidebar />
+      {children}
+    </div>
   );
 }

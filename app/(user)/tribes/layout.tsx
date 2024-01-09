@@ -6,7 +6,7 @@ const tribeLayout = ({ children }: { children: React.ReactNode }) => {
       <div className="w-[60px] h-full dark:bg-[#181310] flex flex-col items-center justify-center">
         <MainSidebar />
       </div>
-      <div className="bg-black">{children}</div>
+      <div className="">{children}</div>
     </div>
   );
 };
