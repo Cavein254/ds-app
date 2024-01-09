@@ -1,3 +1,5 @@
+import MainSidebar from '@/components/sidebar/MainSidebar';
+
 export default function tribeLayout({
   children,
 }: {
@@ -5,8 +7,13 @@ export default function tribeLayout({
 }) {
   return (
     <html>
-      {/* <MainSidebar /> */}
-      <body>{children}</body>
+      <body>
+        <main>
+          <MainSidebar />
+
+          {children}
+        </main>
+      </body>
     </html>
   );
 }
