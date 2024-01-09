@@ -1,12 +1,13 @@
 import Dog from '@/assets/dog2_edited.png';
-import { ToggleTheme } from '@/components/misillenious/ToggleTheme';
-import NavItem from '@/components/nav/NavItem';
 import prisma from '@/lib/prismadb';
 import { initialUser } from '@/lib/routines/initUser';
 import Image from 'next/image';
 import { redirect } from 'next/navigation';
+import { ToggleTheme } from '../misillenious/ToggleTheme';
+import NavItem from '../nav/NavItem';
 import { ScrollArea } from '../ui/scroll-area';
 import SidebarItem from './SidebarItem';
+
 const MainSidebar = async () => {
   const profile = await initialUser();
 

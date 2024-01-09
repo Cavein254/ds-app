@@ -31,7 +31,9 @@ export default function RootLayout({
             enableSystem={false}
             storageKey={appName}
           >
-            <div>{children}</div>
+            <main>
+              <div>{children}</div>
+            </main>
           </ThemeProvider>
         </NextAuthSessionProvider>
       </body>
