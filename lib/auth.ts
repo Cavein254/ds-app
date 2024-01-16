@@ -19,7 +19,7 @@ export const authOptions: AuthOptions = {
       return true;
     },
     async redirect({ url, baseUrl }) {
-      const newUrl = baseUrl + '/dashboard';
+      const newUrl = baseUrl + '/tribes';
       return newUrl;
     },
     async session({ session, user, token }) {

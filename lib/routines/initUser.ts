@@ -1,8 +1,9 @@
 import prisma from '@/lib/prismadb';
+import { NextRequest, NextResponse } from 'next/server';
 // import { authOptions } from '@/lib/auth';
 // import { getServerSession } from 'next-auth';
 
-export const initialUser = async () => {
+export const initialUser = async (req: NextRequest, res: NextResponse) => {
   //TODO :: Get user email from NextAuth
   //TODO :: if no user run a redirect
   // const session = await getServerSession(authOptions);
@@ -20,17 +21,23 @@ export const initialUser = async () => {
   });
 
   if (profile) {
-    return profile;
+    return NextResponse.json(profile);
   }
 
-  const newProfile = await prisma.profile.create({
-    data: {
-      userId: nextEmail.id,
-      name: `${nextEmail.first_name} ${nextEmail.last_name}`,
-      imageUrl: nextEmail.imageUrl,
-      email: nextEmail.email,
-    },
-  });
-
-  return newProfile;
+  try {
+    const newProfile = await prisma.profile.create({
+      data: {
+        userId: nextEmail.id,
+        name: `${nextEmail.first_name} ${nextEmail.last_name}`,
+        imageUrl: nextEmail.imageUrl,
+        email: nextEmail.email,
+      },
+    });
+    return NextResponse.json(newProfile);
+  } catch (err) {
+    return NextResponse.json({
+      error: true,
+      err,
+    });
+  }
 };

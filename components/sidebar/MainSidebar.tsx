@@ -1,6 +1,6 @@
 import Dog from '@/assets/dog2_edited.png';
 import prisma from '@/lib/prismadb';
-import { initialUser } from '@/lib/routines/initUser';
+import axios from 'axios';
 import Image from 'next/image';
 import { redirect } from 'next/navigation';
 import { ToggleTheme } from '../misillenious/ToggleTheme';
@@ -9,7 +9,8 @@ import { ScrollArea } from '../ui/scroll-area';
 import SidebarItem from './SidebarItem';
 
 const MainSidebar = async () => {
-  const profile = await initialUser();
+  const profile = await axios.get('/api/me').then((res) => res.data);
+  console.log({ 'profile-Reading': profile });
 
   if (!profile) {
     return redirect('/');

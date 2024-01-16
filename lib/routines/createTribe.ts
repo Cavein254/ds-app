@@ -1,12 +1,12 @@
 import prisma from '@/lib/prismadb';
-import { initialUser } from '@/lib/routines/initUser';
 import { MemberRole } from '@prisma/client';
+import axios from 'axios';
 import { NextResponse } from 'next/server';
 import { v4 as uuidv4 } from 'uuid';
 
 export async function createTribe(req: Request, res: Response) {
   const { name, description, imageUrl } = await new Response(req.body).json();
-  const { id } = await initialUser();
+  const { id } = await axios.get('/api/me').then((res) => res.data);
   if (!id) {
     return new NextResponse('Unauthorized', { status: 401 });
   }

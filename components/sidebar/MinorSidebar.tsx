@@ -10,7 +10,7 @@ interface StateProps {
   setopenModal: (value: boolean) => void;
   openModal: boolean;
 }
-const MinorSidebar = async ({ openModal, setopenModal }: StateProps) => {
+const MinorSidebar = ({ openModal, setopenModal }: StateProps) => {
   //TODO :: implement better state management tool
 
   return (
