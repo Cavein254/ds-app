@@ -1,5 +1,6 @@
 'use client';
 
+import { GetData } from '@/utils/fetcher';
 import React from 'react';
 
 const Register = () => {
@@ -12,8 +13,9 @@ const Register = () => {
     setUser((prevState) => ({ ...prevState, [name]: value }));
   };
   const onFormSubmit = () => {
-    const data = fetch(`${}/api/register`)
-  }
+    const data = GetData('/api/user', user, 'POST');
+    console.log(data);
+  };
   return (
     <div>
       <input
