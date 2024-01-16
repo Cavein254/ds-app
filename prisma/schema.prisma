@@ -36,12 +36,10 @@ model Session {
 
 model User {
   id            String    @id @default(cuid())
-  username      String?   @unique
   name          String?
   email         String?   @unique
   emailVerified DateTime?
   image         String?
-  isAdult       Boolean   @default(false)
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
   account       Account[]
@@ -66,6 +64,8 @@ model Profile {
   email    String? @unique
   name     String?
   imageUrl String? @db.Text
+  isAdult       Boolean   @default(false)
+
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

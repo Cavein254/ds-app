@@ -1,5 +1,6 @@
 'use client';
 
+import { GetData } from '@/utils/fetcher';
 import { useState } from 'react';
 
 const Register = () => {
@@ -12,25 +13,12 @@ const Register = () => {
     username,
     isAdult,
   };
-  const onFormSubmit = () => {
-    const data = async () => {
-      const user = await fetch(`${process.env.NEXT_APP_URL}/api/user`, {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(userData),
-      })
-        .then((resData) => resData.json())
-        .then((data) => data)
-        .catch((err) => console.log(err));
-      return user;
-    };
-    console.log(data);
+  const onFormSubmit = (e) => {
+    e.preventDefault();
+    GetData('/api/user', userData, 'POST');
   };
   return (
-    <form onSubmit={onFormSubmit}>
+    <form>
       <input
         type="text"
         placeholder="username"
@@ -43,7 +31,7 @@ const Register = () => {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
-      <button type="submit">register</button>
+      <button onClick={onFormSubmit}>register</button>
     </form>
   );
 };
