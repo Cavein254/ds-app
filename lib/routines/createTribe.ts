@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import prisma from '../prismadb';
 
 export async function createTribe(req: Request, res: Response) {
   console.log('on create tribe');
