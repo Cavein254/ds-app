@@ -3,6 +3,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import prisma from '../prismadb';
 
 export const registerUser = async (req: NextRequest, res: NextResponse) => {
+  console.log('on register user ');
+  console.log('on register user ');
   const { username, email, isAdult } = await new Response(req.body).json();
   const user = await prisma.user.findUnique({
     where: {
@@ -20,12 +22,10 @@ export const registerUser = async (req: NextRequest, res: NextResponse) => {
       });
       return redirect('/signup');
     } catch (err) {
-      return NextResponse.json({
-        err: true,
-        msg: 'Unable to register user',
-      });
+      console.log('Logging error');
+      console.log(err);
+      return NextResponse.json(err);
     }
   }
-
   return redirect('/signup');
 };

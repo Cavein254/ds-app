@@ -1,37 +1,50 @@
 'use client';
 
-import { GetData } from '@/utils/fetcher';
-import React from 'react';
+import { useState } from 'react';
 
 const Register = () => {
-  const [user, setUser] = React.useState({
-    username: '',
-    email: '',
-  });
-  const onChangeHandler = (e) => {
-    const { name, value } = e.target;
-    setUser((prevState) => ({ ...prevState, [name]: value }));
+  const [email, setEmail] = useState('');
+  const [username, setusername] = useState('');
+  const [isAdult, setisAdult] = useState(false);
+
+  const userData = {
+    email,
+    username,
+    isAdult,
   };
   const onFormSubmit = () => {
-    const data = GetData('/api/user', user, 'POST');
+    const data = async () => {
+      const user = await fetch(`${process.env.NEXT_APP_URL}/api/user`, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData),
+      })
+        .then((resData) => resData.json())
+        .then((data) => data)
+        .catch((err) => console.log(err));
+      return user;
+    };
     console.log(data);
   };
   return (
-    <div>
+    <form onSubmit={onFormSubmit}>
       <input
         type="text"
         placeholder="username"
-        value={user.username}
-        onChange={(e) => onChangeHandler(e)}
+        value={username}
+        onChange={(e) => setusername(e.target.value)}
       />
       <input
         type="text"
         placeholder="email"
-        value={user.email}
-        onChange={(e) => onChangeHandler(e)}
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
       />
       <button type="submit">register</button>
-    </div>
+    </form>
   );
 };
 
