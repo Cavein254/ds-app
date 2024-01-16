@@ -1,7 +1,6 @@
 'use client';
 import '@/app/globals.css';
 import MainSidebar from '@/components/sidebar/MainSidebar';
-import MinorSidebar from '@/components/sidebar/MinorSidebar';
 import { useState } from 'react';
 const tribeLayout = ({ children }: { children: React.ReactNode }) => {
   const [openModal, setopenModal] = useState(false);
@@ -12,7 +11,7 @@ const tribeLayout = ({ children }: { children: React.ReactNode }) => {
       </div>
       <div>
         {openModal ? (
-          <MinorSidebar openModal={openModal} setopenModal={setopenModal} />
+          '<MinorSidebar openModal={openModal} setopenModal={setopenModal} />'
         ) : (
           <div>
             <h1>The end of the road all</h1>

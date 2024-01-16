@@ -1,12 +1,9 @@
-import prisma from '@/lib/prismadb';
-import { MemberRole } from '@prisma/client';
-import axios from 'axios';
 import { NextResponse } from 'next/server';
-import { v4 as uuidv4 } from 'uuid';
 
 export async function createTribe(req: Request, res: Response) {
+  console.log('on create tribe');
   const { name, description, imageUrl } = await new Response(req.body).json();
-  const { id } = await axios.get('/api/me').then((res) => res.data);
+  const id = '2';
   if (!id) {
     return new NextResponse('Unauthorized', { status: 401 });
   }
@@ -33,7 +30,6 @@ export async function createTribe(req: Request, res: Response) {
     });
     return NextResponse.json(newTribe);
   } catch (err) {
-    console.log(err);
     return NextResponse.json(err);
   }
 }

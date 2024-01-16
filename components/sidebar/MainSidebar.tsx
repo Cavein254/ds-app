@@ -1,30 +1,39 @@
 import Dog from '@/assets/dog2_edited.png';
-import prisma from '@/lib/prismadb';
 import axios from 'axios';
 import Image from 'next/image';
 import { redirect } from 'next/navigation';
 import { ToggleTheme } from '../misillenious/ToggleTheme';
-import NavItem from '../nav/NavItem';
 import { ScrollArea } from '../ui/scroll-area';
 import SidebarItem from './SidebarItem';
 
-const MainSidebar = async () => {
-  const profile = await axios.get('/api/me').then((res) => res.data);
-  console.log({ 'profile-Reading': profile });
+const MainSidebar = () => {
+  console.log('on mainsidebar');
+  const profile = async () => {
+    const data = await axios
+      .get('/api/me')
+      .then((res) => res.data)
+      .catch((err) => console.log(err));
+    return data;
+  };
+  console.log(profile);
 
   if (!profile) {
     return redirect('/');
   }
 
-  const tribes = await prisma.tribe.findMany({
-    where: {
-      members: {
-        some: {
-          profileId: profile.id,
-        },
-      },
-    },
-  });
+  const newData = {
+    profileId: 'clr0q48ic00005ej2qnd61sey',
+  };
+
+  const tribes = async () => {
+    const data = await axios
+      .post('/api/me/tribes', newData)
+      .then((res) => res.data)
+      .catch((err) => console.log(err));
+    return data;
+  };
+
+  console.log(tribes);
 
   return (
     <div className="h-full dark:bg-[#181310] bg-gray-400">
@@ -32,11 +41,11 @@ const MainSidebar = async () => {
         <SidebarItem />
         {/* TODO :: Add conditional routing to check route so to display  */}
         <ScrollArea className="">
-          {tribes?.map((tribe) => (
+          {/* {tribes?.map((tribe) => (
             <div key={tribe.id}>
               <NavItem id={tribe.id} imageUrl={tribe.imageUrl} />
             </div>
-          ))}
+          ))} */}
         </ScrollArea>
       </div>
       <div className="bottom-0 right-0 flex flex-col justify-center items-center">
