@@ -1,24 +1,14 @@
+import axios from 'axios';
 import { NextResponse } from 'next/server';
 
 export const GetData = async (url: string, data: any, method: string) => {
   if (method === 'POST') {
     console.log('on route post');
     try {
-      fetch(url, {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      })
-        .then((resData) => resData.json())
-        .then((data) => {
-          return NextResponse.json(data);
-        })
-        .catch((err) => {
-          return NextResponse.json(err);
-        });
+      axios
+        .post(url, data)
+        .then((response) => response)
+        .catch((err) => console.log(err));
     } catch (err) {
       return NextResponse.json(err);
     }
